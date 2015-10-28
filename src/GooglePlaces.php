@@ -25,6 +25,8 @@ class GooglePlaces
     public  $reference = null;
     public  $opennow   = null;
 
+    public $query      = null;
+
     public  $subradius = null;
     public  $getmax    = true;
     private $grid      = null;
@@ -209,6 +211,15 @@ class GooglePlaces
                     if (isset($parameters['rankby']))
                     {
                         unset($this->rankby, $parameters['rankby']);
+                    }
+
+                    break;
+
+
+                case 'textsearch':
+                    if (!isset($parameters['query']))
+                    {
+                        throw new \Exception('You must specify a "query" before calling textSearch().');
                     }
 
                     break;
